@@ -55,3 +55,11 @@ Resources:
       Tags:
       - Key: "Name"
         Value: "Private subnet 1"
+
+# Create an IGW
+  myInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+      - Key: "Name"
+        Value: "CF internet gateway"
