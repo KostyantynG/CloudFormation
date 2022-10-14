@@ -82,3 +82,13 @@ Resources:
         Tags:
         - Key: "Name"
           Value: "Public RT"
+
+# Create a route to an IGW 
+  publicRoute:
+    Type: AWS::EC2::Route
+    Properties:
+       RouteTableId:
+         Ref: publicRouteTable
+       DestinationCidrBlock: 0.0.0.0/0
+       GatewayId:
+         Ref: myInternetGateway
