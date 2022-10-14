@@ -1,0 +1,57 @@
+Resources:
+# Create a VPC
+  myVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      Tags:
+        - Key: Name
+          Value: Terraform Vpc
+
+# Create a Public subnet in AZ1
+  mySubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: myVPC
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: "us-west-2a"
+      Tags:
+      - Key: "Name"
+        Value: "Public subnet 1"
+
+# Create a Private subnet in AZ1
+  mySubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: myVPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: "us-west-2a"
+      Tags:
+      - Key: "Name"
+        Value: "Private subnet 1"
+  
+# Create a Public subnet in AZ2
+  mySubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: myVPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: "us-west-2b"
+      Tags:
+      - Key: "Name"
+        Value: "Public subnet 1"
+
+# Create a Private subnet in AZ2
+  mySubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: myVPC
+      CidrBlock: 10.0.3.0/24
+      AvailabilityZone: "us-west-2b"
+      Tags:
+      - Key: "Name"
+        Value: "Private subnet 1"
