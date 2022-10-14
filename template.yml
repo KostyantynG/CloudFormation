@@ -72,3 +72,13 @@ Resources:
          Ref: myVPC
       InternetGatewayId:
          Ref: myInternetGateway
+
+# Create public route table
+  publicRouteTable:
+      Type: AWS::EC2::RouteTable
+      Properties:
+        VpcId:  
+          Ref: myVPC
+        Tags:
+        - Key: "Name"
+          Value: "Public RT"
