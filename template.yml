@@ -63,3 +63,12 @@ Resources:
       Tags:
       - Key: "Name"
         Value: "CF internet gateway"
+
+# Attach IGW to a VPC
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+         Ref: myVPC
+      InternetGatewayId:
+         Ref: myInternetGateway
