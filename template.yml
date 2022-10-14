@@ -42,7 +42,7 @@ Resources:
       AvailabilityZone: "us-west-2b"
       Tags:
       - Key: "Name"
-        Value: "Public subnet 1"
+        Value: "Public subnet 2"
 
 # Create a Private subnet in AZ2
   mySubnet3:
@@ -54,7 +54,7 @@ Resources:
       AvailabilityZone: "us-west-2b"
       Tags:
       - Key: "Name"
-        Value: "Private subnet 1"
+        Value: "Private subnet 2"
 
 # Create an IGW
   myInternetGateway:
@@ -93,6 +93,15 @@ Resources:
        GatewayId:
          Ref: myInternetGateway
 
+# Associate Route Table with Public Subnet 1
+  mySubnetRouteTableAssociation:
+      Type: AWS::EC2::SubnetRouteTableAssociation
+      Properties:
+        SubnetId:
+          Ref: mySubnet
+        RouteTableId:
+          Ref: publicRouteTable
+
 # Create security group
   FridayInstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -112,3 +121,5 @@ Resources:
       SecurityGroupEgress:
         - IpProtocol: -1
           CidrIp: 0.0.0.0/0
+
+
