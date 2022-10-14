@@ -103,7 +103,7 @@ Resources:
           Ref: publicRouteTable
 
 # Create security group
-  FridayInstanceSecurityGroup:
+  fridayInstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Allow http and ssh to client host
@@ -129,7 +129,13 @@ Resources:
       ImageId: "ami-08e2d37b6a0129927"
       InstanceType: "t2.micro"
       KeyName: "vockey"
-      SubnetId: !Ref mySubnet
+      NetworkInterfaces: 
+      - AssociatePublicIpAddress: "true"
+        DeviceIndex: "0"
+        GroupSet: 
+          - Ref: "fridayInstanceSecurityGroup"
+        SubnetId: 
+          Ref: "mySubnet"
       Tags:
       - Key: "Name"
         Value: "CloudFormation instance"
