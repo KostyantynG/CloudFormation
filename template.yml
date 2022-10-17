@@ -6,7 +6,7 @@ Resources:
       CidrBlock: 10.0.0.0/16
       Tags:
         - Key: Name
-          Value: Terraform Vpc
+          Value: CloudFormation Vpc
 
 # Create a Public subnet in AZ1
   mySubnet:
@@ -143,7 +143,7 @@ Resources:
           yum install -y httpd
           systemctl enable httpd
           systemctl start httpd
-          echo '<html><h1>Hello From Your Web Server!</h1></html>' > /var/www/html/index.html
+          curl https://raw.githubusercontent.com/KostyantynG/alpaca-is-here/main/index.html > /var/www/html/index.html
       Tags:
       - Key: "Name"
         Value: "CloudFormation instance"
